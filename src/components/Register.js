@@ -14,10 +14,11 @@ export default class Register extends Component {
     event.preventDefault()
     usersModel.register(this.state)
       .then(response=>response.json())
-      .then(error=>{
-        this.setState({errors:error.errors});
-        console.log(error)})
+      .then(status=>{
+        this.setState({errors:status.errors})
+      })
   }
+
   handleChange=(event)=>{
     this.setState({[event.target.name]:event.target.value})
   }
@@ -25,6 +26,7 @@ export default class Register extends Component {
   render() { 
     return ( 
       <form onSubmit={this.handleSubmit} style={{border:"solid black 2px"}}>
+      <h2>Register</h2>
         <label>Username</label>
         <input name="user_login" value={this.state.user_login} onChange={this.handleChange}></input>
         <label>Email</label>
