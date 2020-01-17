@@ -9,8 +9,6 @@ class usersModel{
       method:"POST",
       body: JSON.stringify(data)
     })
-    .then(()=>console.log('Success from userModels'))
-		.catch(error=>console.log("Failed to post data",error))
   }
 
 }
