@@ -23,7 +23,7 @@ export default class Login extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} style={{ border: "solid black 2px" }}>
+      <form onSubmit={this.handleSubmit}>
         <h2>Login</h2>
         <label>Username</label>
         <input name="user_login" value={this.state.user_login} onChange={this.handleChange}></input>

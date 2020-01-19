@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { Helmet } from "react-helmet";
+import { Route,Switch } from "react-router-dom";
+import styles from './styles/App.module.css'
 import Register from './components/Register'
 import Login from './components/Login'
+import Header from './components/Header';
 
 export default class App extends Component{
   state = {
@@ -19,13 +22,21 @@ export default class App extends Component{
   };
   render() {
     return (
-      <div className="app">
+      <div className={styles.app}>
         <Helmet>
           <title>ConneX</title>
           <meta name="description" content="Discover if your favorite influencer is on another platform. Connect all your platforms as an influencer in a single spot. ConneX aims to make influencer discoverability across the disparate streaming and social media services easy with one site." />
         </Helmet>
-        <Login setCurrentUser={this.setCurrentUser}/>
-        <Register />
+        <Header/>
+        <Switch>
+          <div className={styles.content}>
+            <Route exact path="/register"
+              render={props => <Login{...props} setCurrentUser={this.setCurrentUser}/>}
+            />            
+            <Register />
+          </div>
+        </Switch>
+        
       </div>
     );
   }
