@@ -13,32 +13,32 @@
   -webkit-appearance: none;
   -moz-appearance: none;
 }
-.button:focus {outline:0;}
 .button::before{
   position: absolute;
   margin-top: 0px;
   z-index: -1;
   content: "";
-  top: -2px;
-  left: 0;
+  top: 0;
+  left: -62px;
   right: 0;
   bottom: 0;
-  width: 0;
-  height: 0;
-  border-top: 50px solid #808080;
-  border-right: 50px solid transparent;
+  width: 81px;
+  height: 81px;
+  background-color: #808080;
+  transform-origin: left top;
+  transform: rotate(-45deg);
 }
 .box{
+  text-align: center;
   position: relative;
   white-space: nowrap;
+  z-index: 1;
   margin:0px;
   padding: 0px;
   display: inline-block;
-  height:100px;
+  height: 100vh;
   transition: 0.2s;
   overflow-x: hidden;
+  overflow-y: scroll;
   background-color: #808080;
-}
-.hidden{
-  display: none;
 }

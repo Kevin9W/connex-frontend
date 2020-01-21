@@ -2,14 +2,16 @@ body{
   margin:0px;
   font-family: 'Muli', sans-serif;
 }
+button:focus {outline:0;}
 .app{
   display:grid;
-  grid-template-rows: 50px 50px auto;
-  grid-template-columns: ;
+  grid-template-rows: 50px 50px auto 25px;
 }
 .content{
   grid-area: 3/1/4/2;
 }
-.side_nav{
-  grid-area: 2/1/4/2
+.under_nav{
+  display: flex;
+  justify-content: space-between;
+  grid-area: 2/1/4/2;
 }

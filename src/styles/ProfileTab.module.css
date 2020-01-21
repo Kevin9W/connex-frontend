@@ -1,0 +1,15 @@
+.tab{
+  background-color: #808080;
+  height: 0px;
+  width: 100px;
+  transition: 0.2s;
+  overflow-y: hidden;
+  text-align: center;
+  z-index: 0;
+}
+.links{
+  display: block;
+  cursor: pointer;
+  color:#ffffff;
+  text-decoration: none;
+}

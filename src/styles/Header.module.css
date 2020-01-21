@@ -1,5 +1,6 @@
 .top_nav{
   grid-area:1/1/2/2;
+  z-index: 1;
   display: flex;
   margin: 0px;
   padding: 0em 1em;
@@ -12,11 +13,60 @@
   color: #ffffff;
   text-decoration: none;
   transition: 0.2s;
-
 }
 .home_button:hover{
   color: red;
 }
 .nav_buttons{
   margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+.button {
+  display: inline-block;
+  margin:10px;
+  border: none;
+  background-color: #808080;
+  text-decoration: none;
+  position:relative;
+  z-index: 0;
+  color: #ffffff;
+  font-size: 1em;
+  cursor: pointer;
+  text-align: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+.button::before{
+  position: absolute;
+  top: -2px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  content: "";
+  width: 95%;
+  height: 110%;
+  border:red 2px solid;
+  transition: 0.2s;
+  transform: skew(-20deg);
+  -webkit-transform: skew(-20deg);
+  -moz-transform: skew(-20deg);
+  -ms-transform: skew(-20deg); 
+}
+.button:hover::before{
+  border:gold 2px solid;
+}
+.profile_icon{
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  border: none;
+  border-radius: 50%;
+  background-color: red;
+  position:relative;
+  z-index: 0;
+  cursor: pointer;
+  transition: 0.2s;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
