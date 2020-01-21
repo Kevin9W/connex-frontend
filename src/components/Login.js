@@ -4,7 +4,8 @@ import usersModel from '../models/usersModel'
 export default class Login extends Component {
   state={
     user_login:"",
-    password:""
+    password:"",
+    errorMessage:"",
   }
 
   handleSubmit=(event)=>{
@@ -12,7 +13,9 @@ export default class Login extends Component {
     usersModel.login(this.state)
       .then(response => response.json())
       .then(data => {
-        console.log("Success")
+        if (data.status===400){
+          this.setState({errorMessage:data.message})
+        }
         this.props.setCurrentUser(data.signedJwt);
       })
   }
@@ -30,6 +33,7 @@ export default class Login extends Component {
         <label>Password</label>
         <input type="password" name="password" value={this.state.password} onChange={this.handleChange}></input>
         <button type='submit'>Submit</button>
+        <h3>{this.state.errorMessage}</h3>
       </form>
     )
   }
