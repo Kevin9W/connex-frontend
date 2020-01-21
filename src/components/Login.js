@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Redirect } from "react-router-dom";
 import usersModel from '../models/usersModel'
 import styles from '../styles/Login.module.css'
 
@@ -7,6 +8,7 @@ export default class Login extends Component {
     user_login:"",
     password:"",
     message:"",
+    redirect:false,
   }
 
   handleSubmit=(event)=>{
@@ -20,16 +22,18 @@ export default class Login extends Component {
         else{
           this.setState({message: data.message })
           this.props.setCurrentUser(data.signedJwt);
+          this.setState({redirect:true})
         }
       })
-      .then()
   }
   
   handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value })
   }
-
   render() {
+    if(this.state.redirect){
+      return <Redirect to='/profile'/>
+    }
     return (
       <div className={styles.box}>
         <form className={styles.form} onSubmit={this.handleSubmit}>

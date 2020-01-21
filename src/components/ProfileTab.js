@@ -11,9 +11,11 @@ class ProfileTab extends Component{
     this.props.logout()
     this.props.expandProfile()
   }
-  handleClickOutside=()=>{
-    if (this.props.profileTab){
-      this.props.expandProfile()
+  handleClickOutside=(event)=>{
+    if (event.target.classList[1]!=='profile_icon'){
+      if (this.props.profileTab) {
+        this.props.expandProfile()
+      }
     }
   }
   componentDidUpdate(prevProps){

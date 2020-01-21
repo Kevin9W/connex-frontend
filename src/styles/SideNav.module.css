@@ -36,7 +36,7 @@
   margin:0px;
   padding: 0px;
   display: inline-block;
-  height: 100vh;
+  height: 100%;
   transition: 0.2s;
   overflow-x: hidden;
   overflow-y: scroll;

@@ -5,9 +5,11 @@ import styles from './styles/App.module.css'
 import Home from "./components/Home";
 import Header from './components/Header';
 import ProfileTab from "./components/ProfileTab";
+import Profile from "./components/Profile";
 import SideNav from "./containers/SideNav";
 import Login from './components/Login'
 import Register from './components/Register'
+import ResultsPage from "./containers/ResultsPage";
 import Footer from './components/Footer';
 
 export default class App extends Component{
@@ -37,7 +39,7 @@ export default class App extends Component{
           <title>ConneX</title>
           <meta name="description" content="Discover if your favorite influencer is on another platform. Connect all your platforms as an influencer in a single spot. ConneX aims to make influencer discoverability across the disparate streaming and social media services easy with one site." />
         </Helmet>
-        <Header currentUser={this.state.currentUser} logout={this.logout} expandProfile={this.expandProfile}/>
+        <Header currentUser={this.state.currentUser} logout={this.logout} expandProfile={this.expandProfile} getSearchQuery={this.getSearchQuery}/>
         <div className={styles.under_nav}>
           <SideNav className={styles.side_nav} />
           <ProfileTab className={styles.profile_tab} profileTab={this.state.profileTab} expandProfile={this.expandProfile} logout={this.logout} />
@@ -49,6 +51,8 @@ export default class App extends Component{
             <Route exact path="/login"
               render={props => <Login{...props} setCurrentUser={this.setCurrentUser} />} />
             <Route exact path="/register" component={Register} />
+            <Route exact path="/profile" component={Profile}/>
+            <Route exact path="/results" component={ResultsPage}/>
           </Switch>
         </main>
         <Footer/>

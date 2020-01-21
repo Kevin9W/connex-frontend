@@ -5,6 +5,7 @@
   margin: 0px;
   padding: 0em 1em;
   align-items: center;
+  justify-content: space-between;
   background-color:#808080;
 }
 .home_button{
@@ -17,8 +18,13 @@
 .home_button:hover{
   color: red;
 }
+.search{
+  line-height: 2em;
+  width: 20em;
+  border: none;
+  border-radius: 2px;
+}
 .nav_buttons{
-  margin-left: auto;
   display: flex;
   align-items: center;
 }
@@ -37,6 +43,7 @@
   -webkit-appearance: none;
   -moz-appearance: none;
 }
+
 .button::before{
   position: absolute;
   top: -2px;
