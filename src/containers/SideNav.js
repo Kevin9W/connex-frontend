@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
+import onClickOutside from "react-onclickoutside";
 import styles from "../styles/SideNav.module.css";
 
-export default class SideNav extends Component {
+class SideNav extends Component {
   state={
     button:'+',
     width:'0',
+  }
+  handleClickOutside=()=>{
+    this.setState({button:"+"})
   }
   handleButton=()=>{
     switch (this.state.button) {
@@ -37,6 +41,13 @@ export default class SideNav extends Component {
       <div>
         <div className={styles.box} style={{width:this.state.width}}>
           <p>Some Text</p>
+          <p>Some Text</p>
+          <p>Some Text</p>
+          <p>Some Text</p>
+          <p>Some Text</p>
+          <p>Some Text</p>
+          <p>Some Text</p>
+          <p>Some Text</p>
         </div>
         <button className={styles.button} onClick={this.handleButton}>
           {this.state.button}
@@ -45,3 +56,5 @@ export default class SideNav extends Component {
     )
   }
 }
+
+export default onClickOutside(SideNav)

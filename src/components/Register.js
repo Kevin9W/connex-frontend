@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import usersModel from '../models/usersModel'
+import styles from "../styles/Register.module.css";
 
 export default class Register extends Component {
   state = { 
@@ -25,18 +26,20 @@ export default class Register extends Component {
 
   render() { 
     return ( 
-      <form onSubmit={this.handleSubmit}>
-      <h2>Register</h2>
-        <label>Username</label>
-        <input name="user_login" value={this.state.user_login} onChange={this.handleChange}></input>
-        <label>Email</label>
-        <input name="email" value={this.state.email} onChange={this.handleChange}></input>
-        <label>Password</label>
-        <input type="password" name="password" value={this.state.password} onChange={this.handleChange}></input>
-        <label>Confirm Password</label>
-        <input type="password" name="password2" value={this.state.password2} onChange={this.handleChange}></input>
-        <button type="submit">Submit</button>
-      </form>
+      <div className={styles.box}>
+        <form className={styles.form} onSubmit={this.handleSubmit}>
+          <h2>Register</h2>
+          <label>Username</label>
+          <input name="user_login" value={this.state.user_login} onChange={this.handleChange}></input>
+          <label>Email</label>
+          <input name="email" value={this.state.email} onChange={this.handleChange}></input>
+          <label>Password</label>
+          <input type="password" name="password" value={this.state.password} onChange={this.handleChange}></input>
+          <label>Confirm Password</label>
+          <input type="password" name="password2" value={this.state.password2} onChange={this.handleChange}></input>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
      );
   }
 }
