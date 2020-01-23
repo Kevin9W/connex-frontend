@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 import styles from "../styles/Results.module.css";
 
 export default class Results extends Component {
-  
   handleClick=()=>{
     switch (this.props.which) {
       case 'users':
@@ -25,12 +24,16 @@ export default class Results extends Component {
             resultDisplay=[]
             let i
             for (let user of data){
+              let tags = user.tags
+              if (user.tags.length > 1) {
+                tags = tags.join(', ')
+              }
               resultDisplay.push(
                 <div className={styles.result} key={i}>
                   <label>{user.user_login}</label>
                   <img src={user.profile_img_url} alt='profile icon'/>
                   <p>{user.description}</p>
-                  {user.tags?<p>tags: {user.tags}</p>:""}
+                  {user.tags?<p>tags: {tags}</p>:""}
                 </div>
               )
               i++
