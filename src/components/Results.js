@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Redirect } from "react-router-dom";
+// import { withRouter } from "react-router-dom";
 import styles from "../styles/Results.module.css";
 
 export default class Results extends Component {
@@ -8,7 +8,6 @@ export default class Results extends Component {
     switch (this.props.which) {
       case 'users':
         console.log('clicked!')
-        // return <Redirect to='details'/>
         break;
       default:
         console.log('clicked!')
