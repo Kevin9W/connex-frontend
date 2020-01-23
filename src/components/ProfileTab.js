@@ -20,7 +20,7 @@ class ProfileTab extends Component{
   }
   componentDidUpdate(prevProps){
     if (this.props.profileTab !== prevProps.profileTab){
-      this.props.profileTab ? this.setState({ height: "200px" }) : this.setState({ height: "0px" }) 
+      this.props.profileTab ? this.setState({ height: "20%" }) : this.setState({ height: "0px" }) 
     }
   }
   render(){

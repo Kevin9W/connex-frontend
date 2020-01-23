@@ -1,20 +1,16 @@
 import React, { Component } from 'react'
-import {Link, Redirect} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import styles from "../styles/Header.module.css";
 
 export default class Header extends Component{
   state={
-    searchQuery:'',
     showSearch:'block',
   }
+
   handleSubmit=(event)=>{
     event.preventDefault()
-    console.log('searching o3o')
-    
+    this.props.history.push('/results')
   }
-  handleChange=(event)=>{
-    this.setState({searchQuery:event.target.value})
-  } 
   render(){
     let links = (
       <>
@@ -40,19 +36,22 @@ export default class Header extends Component{
         </button>
     )
     return (
-      <header className={styles.top_nav}>
-        <div className={styles.home}>
-          <Link to='/'>
-            <h2 className={styles.home_button}><em>ConneX</em></h2>
-          </Link>
-        </div>
-        <form onSubmit={this.handleSubmit}>
-          <input className={styles.search} style={{ display: this.state.showSearch }} placeholder="Search" onChange={this.props.getSearchQuery}></input>
-        </form>
-        <nav className={styles.nav_buttons}>
-          {this.props.currentUser ? privateLinks : links}
-        </nav>
-      </header>
+      <>
+        <header className={styles.top_nav}>
+          <div className={styles.home}>
+            <Link to='/'>
+              <h2 className={styles.home_button}><em>Whoops</em></h2>
+            </Link>
+          </div>
+          <form onSubmit={this.handleSubmit} className={styles.search_box}>
+            <input className={styles.search} placeholder="Search" onChange={this.props.getSearchQuery}></input>
+          </form>
+          <nav className={styles.nav_buttons}>
+            {this.props.currentUser ? privateLinks : links}
+          </nav>
+        </header>
+        {/* { this.state.redirect ? <Redirect to="/results"/> : "No results..." } */}
+      </>
     )
   }
 }

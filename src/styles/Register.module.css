@@ -6,6 +6,7 @@
 .form{
   text-align: center;
   width:300px;
+  border-radius: 15px;
   border: #808080 2px solid;
 }
 .form > label{

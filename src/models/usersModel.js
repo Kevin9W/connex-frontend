@@ -1,7 +1,6 @@
 let endpoint='http://localhost:9000'
 
-class usersModel{
-
+export default class usersModel{
   static register=(data)=>{
     return fetch(endpoint+'/register',{
 			headers:{
@@ -20,6 +19,21 @@ class usersModel{
       body: JSON.stringify(data)
     })
   }
+  static getUserInfo=(info)=>{
+    return fetch(endpoint+'/profile/'+info,{
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: "GET",
+    })
+  }
+  static updateUserInfo=(user,data)=>{
+    return fetch(endpoint+'/profile/'+user,{
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: "POST",
+      body: JSON.stringify(data)
+    })
+  }
 }
-
-export default usersModel

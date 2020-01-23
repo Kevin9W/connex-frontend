@@ -21,7 +21,7 @@ export default class Login extends Component {
         }
         else{
           this.setState({message: data.message })
-          this.props.setCurrentUser(data.signedJwt);
+          this.props.setCurrentUser(data.signedJwt,this.state.user_login);
           this.setState({redirect:true})
         }
       })

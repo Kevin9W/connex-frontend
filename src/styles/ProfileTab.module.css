@@ -9,6 +9,7 @@
 }
 .links{
   display: block;
+  margin:10px;
   cursor: pointer;
   color:#ffffff;
   text-decoration: none;

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import usersModel from '../models/usersModel'
 import styles from "../styles/Register.module.css";
+import { Redirect } from 'react-router-dom';
 
 export default class Register extends Component {
   state = { 
@@ -8,16 +9,24 @@ export default class Register extends Component {
     email:'',
     password:'',
     password2:'',
-    errors:null
+    errors:null,
+    redirect:false,
    }
 
   handleSubmit=(event)=>{
     event.preventDefault()
     usersModel.register(this.state)
       .then(response=>response.json())
-      .then(status=>{
-        this.setState({errors:status.errors})
+      .then(data=>{
+        this.setState({errors:data.errors},()=>{
+          console.log(data)
+          if (this.state.errors == null) {
+            this.props.setCurrentUser(data.signedJwt,data.user_login)
+            this.setState({redirect:true})
+          }
+        })
       })
+    
   }
 
   handleChange=(event)=>{
@@ -25,6 +34,9 @@ export default class Register extends Component {
   }
 
   render() { 
+    if(this.state.redirect){
+      return <Redirect to='./profile'/>
+    }
     return ( 
       <div className={styles.box}>
         <form className={styles.form} onSubmit={this.handleSubmit}>
