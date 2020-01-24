@@ -9,6 +9,7 @@ export default class Profile extends Component {
     public:0,
     edit:false,
     data:null,
+    initial:null,
   }
   fetchData=()=>{
     usersModel.getUserInfo(this.props.user_login)
@@ -16,7 +17,7 @@ export default class Profile extends Component {
       .then(data=>this.setState({data,
         public:data.data.public, 
         description: data.data.description,
-        tags: data.data.tags,
+        tags: data.data.tags.join(', '),
         }))
   }
   handleChange=(event)=>{
@@ -42,9 +43,8 @@ export default class Profile extends Component {
       tags:tags,
       id:this.state.data.data.id,
     })
-      .then(status=>console.log(status))
     this.fetchData()
-    this.setState({ edit: false })
+    this.setState({ edit: false, update:true })
   }
   componentDidMount(){
     this.fetchData()
@@ -55,10 +55,10 @@ export default class Profile extends Component {
     let date=null
     if (this.state.data){
       user = this.state.data.data
-      let tags=this.state.tags
-      if (this.state.tags.length>1){
-       tags=tags.join(', ')
-      }
+      // let tags=this.state.tags
+      // if (this.state.tags.length>1){
+      //  tags=[...tags].join(', ')
+      // }
       let dateReg = new Date(user.date_registered)
       date = dateReg.getMonth()+1+'-'+dateReg.getFullYear()
       if (this.state.edit){
@@ -67,9 +67,15 @@ export default class Profile extends Component {
             <h2>{user.user_login}</h2>
             <div>
               <label className={styles.textbox}>Description</label>
-              <textarea rows='5' cols='50' name="description" defaultValue={user.description} onChange={this.handleChange}/>
+              <textarea rows='5' cols='50' 
+                name="description" 
+                defaultValue={this.state.description} 
+                onChange={this.handleChange}/>
               <p>Keep tags seperated with ' , '</p>
-              <input name="tags" defaultValue={tags} onChange={this.handleChange}></input>
+              <input 
+              name="tags" 
+              defaultValue={this.state.tags} 
+              onChange={this.handleChange}/>
               <input type="checkbox" name="public" onClick={this.handleChange} defaultChecked={this.state.public}/>             
               <label>Public</label>
             </div>
@@ -89,7 +95,7 @@ export default class Profile extends Component {
             <div>
               <p className={styles.description}>{user.description}</p>
             </div>
-            <p>Tags: {tags}</p>
+            <p>Tags: {this.state.tags}</p>
             <p>Date Created: {date}</p>
             <p>Profile: {user.public?'Public':'Private'}</p>
             <div className={styles.buttons}>
