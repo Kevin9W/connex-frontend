@@ -5,6 +5,16 @@ Search for your favorite influencers and see if they can be found on other socai
 
 Link to backend: https://github.com/Kevin9W/connex-backend
 
+## Documentation
+After cloning the repository, be sure to install dependencies
+```
+npm install
+```
+To start the frontend application:
+```
+npm start
+```
+
 ## Technologies
 React | React Router | React OnClickOutside | Express | SQLite3
 
