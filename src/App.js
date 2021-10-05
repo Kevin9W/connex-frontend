@@ -4,9 +4,9 @@ import { withRouter } from "react-router-dom";
 import styles from './styles/App.module.css'
 import Header from './components/Header';
 import ProfileTab from "./components/ProfileTab";
-import SideNav from "./containers/SideNav";
+import SideNav from './containers/SideNav';
 import Footer from './components/Footer';
-import Routes from "./config/Routes";
+import Routes from './config/Routes';
 
 class App extends Component{
   state = {
@@ -14,7 +14,11 @@ class App extends Component{
     user_login:sessionStorage.getItem('user'),
     currentUser: localStorage.getItem('uid'),
     profileTab:false,
-  };
+  }
+  handleSubmit = (event) => {
+    event.preventDefault()
+    this.props.history.push('/results')
+  }
   resetSearch=()=>{
     this.setState({searchQuery:""})
   }
@@ -44,6 +48,9 @@ class App extends Component{
         <Header history={this.props.history} currentUser={this.state.currentUser} logout={this.logout} expandProfile={this.expandProfile} getSearchQuery={this.getSearchQuery} makeSearch={this.makeSearch}/>
         <div className={styles.under_nav}>
           <SideNav className={styles.side_nav} />
+          <form className={styles.searh_box} onSubmit={this.handleSubmit}>
+            <input className={styles.search} placeholder="Search" onChange={this.getSearchQuery} />
+          </form>
           <ProfileTab className={styles.profile_tab} profileTab={this.state.profileTab} expandProfile={this.expandProfile} logout={this.logout} />
         </div>
         <main className={styles.content}>

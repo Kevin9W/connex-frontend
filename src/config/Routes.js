@@ -5,6 +5,7 @@ import Profile from "../components/Profile";
 import Login from '../components/Login'
 import Register from '../components/Register'
 import ResultsPage from "../containers/ResultsPage";
+import Details from '../components/Details';
 
 export default withRouter(({ setCurrentUser,getSearchQuery, searchQuery, resetSearch, history, user_login }) => {
   return(
@@ -19,6 +20,8 @@ export default withRouter(({ setCurrentUser,getSearchQuery, searchQuery, resetSe
         render={props => <ResultsPage {...props} history={history} searchQuery={searchQuery} resetSearch={resetSearch}/>} />
       <Route exact path="/profile" 
         render={props => <Profile {...props} user_login={user_login}/>} />
+      <Route path="/details/:user"
+        render={props => <Details {...props} history={history} />} />
     </Switch>
   )
 })

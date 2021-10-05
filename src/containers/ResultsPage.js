@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
+import { withRouter } from "react-router-dom";
 import searchModel from "../models/searchModel";
 import Results from "../components/Results";
 import styles from "../styles/ResultsPage.module.css";
 
-export default class ResultsPage extends Component {
+class ResultsPage extends Component {
   state={
     which:"users",
     userResults:[],
@@ -55,12 +56,13 @@ export default class ResultsPage extends Component {
           <select onChange={this.handleChange}>
             <option value="users">Users</option>
             <option value="twitch">Twitch</option>
-        </select>
+          </select>
         </nav>
         <div className={styles.results}>
-          {sendResults ? <Results which={this.state.which} data={sendResults} /> : "No Results ..."}
+          {sendResults ? <Results which={this.state.which} data={sendResults} history={this.props.history}/> : "No Results ..."}
         </div>
       </div>
     )
   }
 }
+export default withRouter(ResultsPage)

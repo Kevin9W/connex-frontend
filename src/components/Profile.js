@@ -55,10 +55,6 @@ export default class Profile extends Component {
     let date=null
     if (this.state.data){
       user = this.state.data.data
-      // let tags=this.state.tags
-      // if (this.state.tags.length>1){
-      //  tags=[...tags].join(', ')
-      // }
       let dateReg = new Date(user.date_registered)
       date = dateReg.getMonth()+1+'-'+dateReg.getFullYear()
       if (this.state.edit){

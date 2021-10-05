@@ -17,4 +17,12 @@ export default class searchModel {
       method: "GET",
     })
   }
+  static searchMetaTwitch=(identifier)=>{
+    return fetch('https://api.twitch.tv/helix/streams?user_id='+ identifier,{
+      headers: {
+        'Client-ID': twitchClientId
+      },
+      method: "GET",
+    })
+  }
 }

@@ -44,7 +44,6 @@
   -webkit-appearance: none;
   -moz-appearance: none;
 }
-
 .button::before{
   position: absolute;
   top: -2px;
@@ -78,4 +77,9 @@
   transition: 0.2s;
   -webkit-appearance: none;
   -moz-appearance: none;
+}
+@media (max-width:600px){
+  .search{
+    display: none;
+  }
 }

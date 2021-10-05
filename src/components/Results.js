@@ -1,12 +1,17 @@
 import React, { Component } from 'react'
-// import { withRouter } from "react-router-dom";
 import styles from "../styles/Results.module.css";
 
 export default class Results extends Component {
   handleClick=()=>{
     switch (this.props.which) {
       case 'users':
-        console.log('clicked!')
+        console.log('users!')
+        break;
+      case 'twitch':
+        this.props.history.push({
+          pathname: '/details/' + this.props.data.data[0].display_name,
+          state:this.props.data.data, 
+        })
         break;
       default:
         console.log('clicked!')
@@ -22,7 +27,7 @@ export default class Results extends Component {
         case 'users':
           if (data.length > 0) {
             resultDisplay=[]
-            let i
+            let i=0
             for (let user of data){
               let tags = user.tags
               if (user.tags.length > 1) {
